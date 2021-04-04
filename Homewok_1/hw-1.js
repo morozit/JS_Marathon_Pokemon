@@ -4,31 +4,33 @@
 
 const firstRow = 'мама мыла раму';
 const secondRow = 'собака друг человека';
-
+// let findLetter = 'а'
 
 function showRow() {
   let findLetter = prompt('123');
   getRow(firstRow, secondRow, findLetter);
 }
 
-function getRow(a, b, c) {
+function getRow(firstRow, secondRow, findLetter) {
+  let numberFirstLine = countedChar(firstRow, findLetter);
+  let numberSecondLine = countedChar(secondRow, findLetter);
 
-  let numberFirstLine = 0;
+  return alert(numberFirstLine > numberSecondLine ? firstRow : secondRow);
+  // return numberFirstLine > numberSecondLine ? firstRow : secondRow;
+}
 
-  for (let i = 0; i < a.length; i++) {
-    numberFirstLine += a.charAt(i) === c ? 1 : 0;
+function countedChar(row, lettter) {
+  let counted = 0;
+  for (let i = 0; i < row.length; i++) {
 
+    // !Краще Тернарного оператора тим що він повертає тільки щось одне. 
+    if ( row.charAt(i) === lettter ) {
+      counted++;
+    }
   }
-
-  let numberSecondLine = 0;
-
-  for (let y = 0; y < b.length; y++) {
-    numberSecondLine += b.charAt(y) === c ? 1 : 0;
-
-  }
-  
-  return alert(numberFirstLine > numberSecondLine ? a : b);
-
+  return counted;
 }
 showRow();
 
+
+// console.log(getRow(firstRow, secondRow, findLetter));
